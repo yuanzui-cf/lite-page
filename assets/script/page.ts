@@ -34,8 +34,8 @@ export function getPosts(link: string) {
                     des.classList.add("description")
                     info.classList.add("info")
                     // get content
-                    title.textContent = e.querySelector("title")!.textContent || "暂无标题"
-                    des.textContent = e.querySelector("description")?.textContent || e.querySelector("content")?.textContent || "暂无简介"
+                    title.textContent = e.querySelector("title")!.textContent || "No title"
+                    des.textContent = e.querySelector("description")?.textContent || e.querySelector("content")?.textContent || "No description"
                     info.textContent = `${date.getFullYear()} / ${date.getMonth() + 1} / ${date.getDate()}`
                     ele.appendChild(title)
                     ele.appendChild(des)
@@ -52,7 +52,6 @@ export function getPosts(link: string) {
             })
             .catch(err => {
                 console.error(err);
-                let post = <HTMLDivElement>document.querySelector(".post")
-                post.innerText = err
+                document.querySelector(".post")!.innerHTML = `Cannot connect to the blog: ${err}`
             })
 }
