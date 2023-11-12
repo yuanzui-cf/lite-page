@@ -26,6 +26,15 @@ export class litePage {
         })
     }
     getPosts(link: string) {
+        let more = <HTMLDivElement>document.querySelector(".post-more")
+        if(more) {
+            let url = link.replace(/https?:\/\/|\/.*/gi, "")
+            more.innerHTML = `在 ${url} 上查看更多 >`
+            more.addEventListener("click", () => {
+                location.href = `https://${url}`
+            })
+            more.classList.remove("hide")
+        }
         let post = <Element>document.querySelector(".post")
         if(post) {
             fetch(link).then(r => r.text())
