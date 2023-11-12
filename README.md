@@ -1,6 +1,8 @@
 # 🖥️ Lite Page
 A lite personal page template.
 
+[Demo](https://yzcf.top)
+
 ---
 
 ![Screenshot](./art/readme-1.png)
