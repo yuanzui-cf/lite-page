@@ -3,7 +3,7 @@ A lite personal page template.
 
 ---
 
-<img alt="Screenshot" style="border-radius: 8px; box-shadow: 0 0 20px #e0c0ed22" src="./art/readme-1.png"/>
+![Screenshot](./art/readme-1.png)
 
 ## Setting
 
