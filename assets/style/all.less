@@ -1,8 +1,8 @@
 @color: #f1e1f7;
-@bgcolor: #1f0529;
+@bg-color: #1f0529;
 @theme: #e0c0ed;
-@darktheme: darken(@theme, 40%);
-@btncolor: fade(@theme, 10%);
+@dark-theme: darken(@theme, 40%);
+@btn-color: fade(@theme, 10%);
 html, body {
     margin: 0;
     width: 100%;
@@ -16,7 +16,7 @@ body {
     max-width: 1000px;
     min-height: 100%;
     color: @color;
-    background-color: @bgcolor;
+    background-color: @bg-color;
 }
 header {
     width: 100%;
@@ -60,7 +60,7 @@ hgroup {
 }
 .group {
     display: flex;
-    flex-wrap: wrap-all;
+    flex-wrap: wrap;
     gap: 5px;
 }
 .button {
@@ -71,12 +71,13 @@ hgroup {
     min-width: 60px;
     border-radius: 45px;
     font-size: 14px;
-    background: @btncolor;
+    background: @btn-color;
     user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
     &.icon {
         min-width: auto;
     }
@@ -86,12 +87,12 @@ hgroup {
         width: calc(100% - 10px);
         height: 35px;
         border-radius: 35px;
-        background: @darktheme;
+        background: @dark-theme;
         transition: background .1s ease;
         z-index: -1;
     }
     &:hover::after {
-        background: darken(@darktheme, 5%);
+        background: darken(@dark-theme, 5%);
     }
 }
 main {
@@ -100,6 +101,8 @@ main {
     box-sizing: border-box;
 }
 section {
+    user-select: none;
+
     h2::before {
         content: "# ";
     }
@@ -130,10 +133,12 @@ a {
             padding: 25px;
             border-radius: 8px;
             box-sizing: border-box;
+            user-select: none;
             background: darken(@theme, 80%);
             word-break: break-all;
             transition: all .2s ease;
             overflow: hidden;
+            cursor: pointer;
             h3{
                 margin: 0 0 10px;
                 width: 100%;
@@ -213,10 +218,10 @@ footer {
     }
     .button {
         &:hover::after {
-            background: @darktheme;
+            background: @dark-theme;
         }
         &:active::after {
-            background: darken(@darktheme, 5%);
+            background: darken(@dark-theme, 5%);
         }
     }
     .post.load {

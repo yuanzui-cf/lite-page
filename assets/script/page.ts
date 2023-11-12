@@ -5,7 +5,7 @@ export interface Link {
 export function setLink(link: Link[]) {
     link.forEach(e => {
         try {
-            let ele: HTMLDivElement = <HTMLDivElement>document.querySelector("#" + e.id)
+            let ele: HTMLDivElement = <HTMLDivElement>document.querySelector(".button#" + e.id)
             ele.addEventListener("click", () => {
                 location.href = e.link
             })
@@ -20,22 +20,28 @@ export function getPosts(link: string) {
                 let parser = new DOMParser()
                 let res = parser.parseFromString(r, "text/xml")
                 let frag = document.createDocumentFragment()
-                res.querySelectorAll("item").forEach(e => {
+                let item = res.querySelectorAll("item")
+                if(!item.length) {
+                    item = res.querySelectorAll("entry")
+                }
+                item.forEach(e => {
+                    // create elements
                     let ele: HTMLDivElement = document.createElement("div");
-                    let title = document.createElement("h3")
-                    let des = document.createElement("p")
-                    let info = document.createElement("p")
-                    let d = new Date(e.children[4].textContent as string)
+                    let title: HTMLHeadingElement = document.createElement("h3")
+                    let des: HTMLParagraphElement = document.createElement("p")
+                    let info: HTMLParagraphElement = document.createElement("p")
+                    let date: Date = new Date(<string>(e.querySelector("pubDate")?.textContent || e.querySelector("published")?.textContent))
                     des.classList.add("description")
                     info.classList.add("info")
-                    title.textContent = e.children[0].textContent
-                    des.textContent = e.children[2].textContent
-                    info.textContent = `${d.getFullYear()} / ${d.getMonth() + 1} / ${d.getDate()}`
+                    // get content
+                    title.textContent = e.querySelector("title")!.textContent || "暂无标题"
+                    des.textContent = e.querySelector("description")?.textContent || e.querySelector("content")?.textContent || "暂无简介"
+                    info.textContent = `${date.getFullYear()} / ${date.getMonth() + 1} / ${date.getDate()}`
                     ele.appendChild(title)
                     ele.appendChild(des)
                     ele.appendChild(info)
                     ele.addEventListener("click", () => {
-                        location.href = <string>e.children[1].textContent
+                        location.href = e.querySelector("link")?.getAttribute("href") || e.querySelector("link")?.textContent || "#"
                     })
                     frag.appendChild(ele)
                 })
@@ -46,5 +52,7 @@ export function getPosts(link: string) {
             })
             .catch(err => {
                 console.error(err);
+                let post = <HTMLDivElement>document.querySelector(".post")
+                post.innerText = err
             })
 }
