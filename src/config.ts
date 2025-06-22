@@ -3,7 +3,7 @@ import { Language, type Config } from "./types/config";
 export const config: Config = {
     name: "Leo Jia",
     theme: {
-        color: "#6714a3",
+        color: "#441650",
     },
     site: {
         title: "👋 Hello, Leo Jia",
