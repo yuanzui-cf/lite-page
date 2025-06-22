@@ -36,9 +36,9 @@ export interface SiteConfig {
     favicon?: string;
     /**
      * Languages of the site.
-     * @default Language.SimplifiedChinese
+     * @default Language.English
      */
-    language?: Language[];
+    language?: Language | Language[];
 }
 
 export enum Language {
