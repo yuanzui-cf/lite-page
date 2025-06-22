@@ -1,0 +1,12 @@
+---
+import { config } from "../config";
+import { Language } from "../types/config";
+
+let lang = Astro.locals.lang!;
+console.log(lang);
+---
+
+<!doctype html>
+<html lang={lang[0]}>
+    <slot />
+</html>
