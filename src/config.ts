@@ -2,6 +2,7 @@ import { Language, type Config } from "./types/config";
 
 export const config: Config = {
     name: "Leo Jia",
+    avatar: "/avatar.jpg",
     theme: {
         color: "#441650",
     },

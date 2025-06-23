@@ -4,6 +4,10 @@ export interface Config {
      */
     name: string;
     /**
+     * Your avatar.
+     */
+    avatar: string;
+    /**
      * Theme of the UI.
      */
     theme: ThemeConfig;
@@ -32,6 +36,7 @@ export interface SiteConfig {
     subtitle?: string;
     /**
      * Favicon of the site.
+     * @default avatar
      */
     favicon?: string;
     /**
