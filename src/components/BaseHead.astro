@@ -4,7 +4,7 @@
 import "../styles/global.css";
 import FallbackImage from "../assets/default.png";
 import type { ImageMetadata } from "astro";
-import { config } from "../config";
+const config = Astro.locals.config;
 
 const SITE_TITLE = config.site?.title || config.name;
 

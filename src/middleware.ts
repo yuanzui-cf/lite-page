@@ -12,7 +12,17 @@ if (config.site?.language) {
     }
 }
 
+let conf = config;
+if (!conf.site) {
+    conf.site = {
+        title: conf.name,
+        favicon: conf.avatar,
+        language: lang,
+    };
+}
+
 export const onRequest = defineMiddleware((context, next) => {
     context.locals.lang = lang;
+    context.locals.config = conf;
     return next();
 });
