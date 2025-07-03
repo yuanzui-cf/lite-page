@@ -3,3 +3,20 @@
         <slot />
     </div>
 </body>
+
+<style>
+    body::selection {
+        background-color: var(--system-color-900);
+        color: var(--system-color-100);
+    }
+
+    body {
+        --theme-background: var(--system-color-000);
+        --theme-color: var(--system-color-1000);
+    }
+
+    body[dark] {
+        --theme-background: var(--system-color-1000);
+        --theme-color: var(--system-color-000);
+    }
+</style>
