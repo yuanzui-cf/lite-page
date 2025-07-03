@@ -1,0 +1,16 @@
+<footer>
+    <slot />
+    <p>
+        Copyright &COPY; {new Date().getFullYear()}
+        {Astro.locals.config.name}. All rights reserved.
+    </p>
+</footer>
+
+<style>
+    footer {
+        margin: 10px 0 0 0;
+        padding: 0 0 50px 0;
+        font-size: 14px;
+        opacity: 0.6;
+    }
+</style>
