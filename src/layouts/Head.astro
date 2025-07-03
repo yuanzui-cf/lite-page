@@ -1,8 +1,10 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import BaseHead from "./BaseHead.astro";
 ---
 
 <head>
+    <ClientRouter />
     <BaseHead />
     <slot />
 </head>
