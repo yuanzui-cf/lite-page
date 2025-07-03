@@ -35,6 +35,10 @@ export interface SiteConfig {
      */
     subtitle?: string;
     /**
+     * Description of the site.
+     */
+    description?: string;
+    /**
      * Favicon of the site.
      * @default avatar
      */
