@@ -16,7 +16,10 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { description = "", image = FallbackImage } = Astro.props;
+const {
+    description = Astro.locals.config.site?.description || "",
+    image = FallbackImage,
+} = Astro.props;
 const title = `${Astro.props.title ? Astro.props.title + " - " : ""}${SITE_TITLE}`;
 ---
 
