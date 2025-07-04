@@ -1,0 +1,58 @@
+---
+interface Props {
+    icon?: string;
+    title?: string;
+    link?: string;
+}
+
+const { icon, title, link = "#" } = Astro.props;
+---
+
+<a href={link} class={!title ? "icon" : ""} title={title}>
+    {icon ? <i class={icon || ""} /> : ""}
+    {title ? <span>{title}</span> : ""}
+</a>
+
+<style lang="less">
+    a {
+        position: relative;
+        box-sizing: border-box;
+        height: 36px;
+        margin: 5px;
+        padding: 10px 20px;
+        border-radius: 40px;
+        background-color: var(--theme-primary);
+        color: var(--theme-on-primary);
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        user-select: none;
+        font-size: 14px !important;
+        gap: 10px;
+        transition: background-color 0.1s ease;
+
+        &.icon {
+            width: 36px;
+            padding: 10px 10px;
+        }
+
+        &:hover {
+            background-color: var(--theme-secondary);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: -4px;
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+            background-color: var(--theme-secondary);
+            z-index: -1;
+            border-radius: 48px;
+            opacity: 0.3;
+        }
+    }
+</style>
