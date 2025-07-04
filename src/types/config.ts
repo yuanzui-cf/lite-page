@@ -15,6 +15,8 @@ export interface Config {
      * Site config.
      */
     site?: SiteConfig;
+
+    links?: Link[];
 }
 
 export interface ThemeConfig {
@@ -55,4 +57,19 @@ export enum Language {
     TraditionalChinese = "zh-TW", // would change to zh-Hant someday
     English = "en",
     Japanese = "ja",
+}
+
+export interface Link {
+    /**
+     * Name of the link.
+     */
+    icon?: string;
+    /**
+     * Title of the link.
+     */
+    title?: string;
+    /**
+     * URL of the link.
+     */
+    url: string;
 }

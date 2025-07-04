@@ -3,6 +3,26 @@ import { Language, type Config } from "./types/config";
 export const config: Config = {
     name: "Leo Jia",
     avatar: "/avatar.jpg",
+    links: [
+        {
+            icon: "fa-brands fa-github",
+            title: "Github",
+            url: "https://github.com/yuanzui-cf",
+        },
+        {
+            icon: "fa-solid fa-circle-dollar-to-slot",
+            title: "Donate",
+            url: "#donate",
+        },
+        {
+            icon: "fa-brands fa-x-twitter",
+            url: "https://x.com/yuanzui_cf",
+        },
+        {
+            icon: "fa-solid fa-envelope",
+            url: "mailto:grassblogstu@gmail.com",
+        },
+    ],
     theme: {
         color: "#441650",
     },
