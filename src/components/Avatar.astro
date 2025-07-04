@@ -31,6 +31,7 @@ const source = Astro.locals.config.avatar;
             const style = document.createElement("style");
             style.textContent = `
                 img {
+                    user-select: none;
                     position: relative;
                     top: 0;
                     border-radius: 10px;
