@@ -1,11 +1,72 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
+import Body from "../layouts/Body.astro";
+import Footer from "../layouts/Footer.astro";
 import Frame from "../layouts/Frame.astro";
+import Head from "../layouts/Head.astro";
+import Header from "../layouts/Header.astro";
+import Button from "../components/Button.astro";
+
+const links = Astro.locals.config.links;
 ---
 
 <Frame>
-    <head>
-        <BaseHead />
-    </head>
-    <body>Hello World!</body>
+    <Head />
+    <Body>
+        <Header />
+        <div class="intro">
+            <h1>Hello, I'm&nbsp;<span>{Astro.locals.config.name}</span></h1>
+            <h2>{Astro.locals.config.site?.subtitle}</h2>
+            {
+                links ? (
+                    <div class="button-group">
+                        {links.map((link) => (
+                            <Button
+                                icon={link.icon}
+                                title={link.title}
+                                link={link.url}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    ""
+                )
+            }
+        </div>
+        <Footer />
+    </Body>
 </Frame>
+
+<style lang="less">
+    .intro {
+        margin-top: 90px;
+        padding-top: 80px;
+
+        > * {
+            margin: 10px 0;
+        }
+
+        > h1 {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            font-weight: normal;
+
+            > span {
+                font-weight: bolder;
+            }
+        }
+
+        > h2 {
+            font-size: 14px;
+            color: var(--theme-on-surface);
+            font-weight: lighter;
+        }
+
+        > div.button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 20px 0;
+        }
+    }
+</style>
