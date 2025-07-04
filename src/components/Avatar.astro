@@ -1,0 +1,102 @@
+---
+const source = Astro.locals.config.avatar;
+---
+
+<lp-avatar transition:animate="none" src={source} alt="Avatar"></lp-avatar>
+
+<script>
+    class Avatar extends HTMLElement {
+        static observedAttributes = ["src", "width", "height", "alt"];
+
+        private icon = false;
+        private src: string = "";
+        private alt: string = "";
+
+        private img: HTMLImageElement;
+
+        constructor() {
+            super();
+
+            this.img = document.createElement("img");
+        }
+
+        private handleScroll = () => {
+            this.updatePosition();
+        };
+
+        connectedCallback() {
+            const shadow = this.attachShadow({ mode: "open" });
+
+            shadow.appendChild(this.img);
+            const style = document.createElement("style");
+            style.textContent = `
+                img {
+                    position: relative;
+                    top: 0;
+                    border-radius: 10px;
+                    position: relative;
+                    will-change: top;
+                }
+            `;
+
+            shadow.appendChild(style);
+
+            window.addEventListener("scroll", this.handleScroll, {
+                passive: true,
+            });
+
+            document.addEventListener("astro:page-load", () => {
+                this.updatePosition();
+            });
+
+            this.render();
+            this.updatePosition();
+        }
+
+        disconnectedCallback() {
+            window.removeEventListener("scroll", this.handleScroll);
+        }
+
+        attributeChangedCallback(
+            name: string,
+            oldValue: string | null,
+            newValue: string | null,
+        ) {
+            if (name === "src") {
+                this.src = newValue || "";
+            } else if (name === "alt") {
+                this.alt = newValue || "";
+            }
+            this.render();
+            this.updatePosition();
+        }
+
+        render() {
+            if (!this.img) return;
+            this.img.src = this.src || "";
+            this.img.alt = this.alt || "";
+            this.img.width = this.icon ? 40 : 80;
+            this.img.height = this.icon ? 40 : 80;
+            this.img.style.width = this.icon ? "40px" : "80px";
+            this.img.style.height = this.icon ? "40px" : "80px";
+
+            this.img.style.transition = "all 0.1s ease";
+        }
+
+        updatePosition() {
+            if (!this.img) return;
+
+            if (window.location.pathname !== "/" || window.scrollY >= 5) {
+                this.icon = true;
+                this.img.style.top = "0";
+            } else {
+                this.icon = false;
+                this.img.style.top = `160px`;
+            }
+
+            this.render();
+        }
+    }
+
+    customElements.define("lp-avatar", Avatar);
+</script>

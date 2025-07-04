@@ -4,12 +4,10 @@ import Avatar from "../components/Avatar.astro";
 
 <header>
     <div>
-        <div class="icon"></div>
+        <Avatar />
         <div class="menu"></div>
     </div>
 </header>
-
-<!-- <Avatar /> -->
 
 <style lang="less">
     header {
@@ -20,6 +18,8 @@ import Avatar from "../components/Avatar.astro";
         width: 100%;
         height: 60px;
         justify-content: center;
+        backdrop-filter: blur(30px);
+        z-index: 100;
     }
 
     header > div {
