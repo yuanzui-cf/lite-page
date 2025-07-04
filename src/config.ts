@@ -8,6 +8,7 @@ export const config: Config = {
     },
     site: {
         title: "👋 Hello, Leo Jia",
+        subtitle: "🏫 A full time university student. / 👨‍💻 A part time coder.",
         description: "This is my personal site.",
         language: [
             Language.English,
