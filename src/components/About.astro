@@ -1,6 +1,25 @@
+---
+interface Props {
+    techStack?: string[];
+}
+
+const { techStack } = Astro.props;
+---
+
 <div id="about">
     <h3>About Me</h3>
     <slot />
+    {
+        techStack && techStack.length != 0 ? (
+            <div class="tech-stack">
+                {techStack.map((ctx) => (
+                    <div>{ctx}</div>
+                ))}
+            </div>
+        ) : (
+            ""
+        )
+    }
 </div>
 
 <style>
@@ -18,5 +37,32 @@
 
     #about {
         line-height: 1.4lh;
+
+        > div.tech-stack {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            user-select: none;
+            gap: 5px 0;
+
+            > div {
+                display: flex;
+                align-items: center;
+                min-width: 40px;
+                height: 28px;
+                box-sizing: border-box;
+                margin: 0 5px;
+                padding: 0 14px;
+                background-color: var(--theme-surface);
+                color: var(--theme-on-surface);
+                border-radius: 28px;
+                font-size: 13px;
+
+                &:first-child {
+                    margin-left: 0px;
+                }
+            }
+        }
     }
 </style>
