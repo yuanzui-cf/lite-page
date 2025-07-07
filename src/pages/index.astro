@@ -5,6 +5,7 @@ import Frame from "../layouts/Frame.astro";
 import Head from "../layouts/Head.astro";
 import Header from "../layouts/Header.astro";
 import Button from "../components/Button.astro";
+import About from "../components/About.astro";
 
 const links = Astro.locals.config.links;
 ---
@@ -13,7 +14,7 @@ const links = Astro.locals.config.links;
     <Head />
     <Body>
         <Header />
-        <div class="intro">
+        <div id="intro">
             <h1>Hello, I'm&nbsp;<span>{Astro.locals.config.name}</span></h1>
             <h2>{Astro.locals.config.site?.subtitle}</h2>
             {
@@ -32,14 +33,39 @@ const links = Astro.locals.config.links;
                 )
             }
         </div>
+        <About>
+            <p>👋 Hey there! I'm Leo Jia (@yuanzui_cf)</p>
+            <p>🏫 I'm a university student</p>
+            <p>👀 I love Coding</p>
+            <p>🌱 I'm learning Rust, Golang, TypeScript, C++ and more...</p>
+            <p>
+                🎮 When I'm not coding, you'll find me gaming - Counter-Strike
+                2, Garry's Mod, and Minecraft are my go-to. If I'm free, we
+                could team up!
+            </p>
+            <p>
+                📫 Feel free to hit me up via email at <a
+                    href="mailto:grassblogstu@gmail.com"
+                    >grassblogstu@gmail.com</a
+                > or on <a href="https://t.me/yuanzui_cf">Telegram</a>
+            </p>
+        </About>
         <Footer />
     </Body>
 </Frame>
 
 <style lang="less">
-    .intro {
+    a {
+        color: var(--theme-secondary);
+
+        &:link {
+            color: var(--theme-primary);
+        }
+    }
+
+    #intro {
         margin-top: 90px;
-        padding-top: 80px;
+        padding-top: 90px;
 
         > * {
             margin: 10px 0;

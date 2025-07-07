@@ -10,8 +10,12 @@ export const config: Config = {
             url: "https://github.com/yuanzui-cf",
         },
         {
+            icon: "fa-brands fa-blogger-b",
+            title: "Blog",
+            url: "/blog",
+        },
+        {
             icon: "fa-solid fa-circle-dollar-to-slot",
-            title: "Donate",
             url: "#donate",
         },
         {
