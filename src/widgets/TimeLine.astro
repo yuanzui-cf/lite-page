@@ -1,0 +1,63 @@
+---
+interface TimeLine {
+    time: string;
+    event: string;
+}
+
+interface Props {
+    list: TimeLine[];
+    title?: string;
+}
+
+const { title, list } = Astro.props;
+---
+
+<div class="time-line">
+    <h3>{title ? title : "Time Line"}</h3>
+    <ul>
+        {
+            list.map((ctx) => (
+                <li>
+                    <strong>{ctx.time}</strong>&nbsp;-&nbsp;{ctx.event}
+                </li>
+            ))
+        }
+    </ul>
+</div>
+
+<style lang="less">
+    ul {
+        position: relative;
+        margin: 20px 0;
+        line-height: 1.2lh;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -10px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background-color: var(--theme-primary);
+        }
+
+        > li {
+            position: relative;
+            list-style: none;
+            padding-left: 15px;
+            margin: 18px 0;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: -5px;
+                top: 10px;
+                transform: translateY(-50%);
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: var(--theme-primary);
+            }
+        }
+    }
+</style>

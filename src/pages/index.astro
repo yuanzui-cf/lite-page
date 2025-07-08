@@ -6,6 +6,7 @@ import Head from "../layouts/Head.astro";
 import Header from "../layouts/Header.astro";
 import Button from "../components/Button.astro";
 import About from "../widgets/About.astro";
+import TimeLine from "../widgets/TimeLine.astro";
 
 const links = Astro.locals.config.links;
 ---
@@ -50,19 +51,53 @@ const links = Astro.locals.config.links;
                 > or on <a href="https://t.me/yuanzui_cf">Telegram</a>
             </p>
         </About>
+        <TimeLine
+            list={[
+                { time: "2020", event: "Published my first blog post" },
+                {
+                    time: "2021",
+                    event: "Began learning PHP, only to eventually discard it",
+                },
+                {
+                    time: "2022",
+                    event: "Learned JavaScript, TypeScript, and Golang; founded Grass Development Team; launched my second personal blog",
+                },
+                {
+                    time: "2023",
+                    event: "Developed 'lite-page' and launched a Minecraft server; start my third blog",
+                },
+                {
+                    time: "2024",
+                    event: "Began learning Rust and Dart",
+                },
+                {
+                    time: "2025",
+                    event: "Attended the National College Entrance Examination",
+                },
+            ]}
+        />
         <Footer />
     </Body>
 </Frame>
 
-<style lang="less">
-    a {
-        color: var(--theme-secondary);
+<style lang="less" is:global>
+    h3 {
+        position: relative;
+        margin-bottom: 10px;
 
-        &:link {
-            color: var(--theme-primary);
+        &::before {
+            position: absolute;
+            left: -15px;
+            content: "#";
         }
     }
 
+    #app > div {
+        margin: 20px 0;
+    }
+</style>
+
+<style lang="less">
     #intro {
         margin-top: 90px;
         padding-top: 90px;
@@ -92,7 +127,7 @@ const links = Astro.locals.config.links;
             display: flex;
             flex-wrap: wrap;
             gap: 5px;
-            margin: 20px 0;
+            margin: 20px 0 0 0;
         }
     }
 </style>
