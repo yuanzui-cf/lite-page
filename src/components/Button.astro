@@ -8,7 +8,11 @@ interface Props {
 const { icon, title, link = "#" } = Astro.props;
 ---
 
-<a href={link} class={!title ? "icon" : ""} title={title}>
+<a
+    href={link}
+    class={!title ? "icon" : ""}
+    title={title ? title : "Icon Button"}
+>
     {icon ? <i class={icon || ""} /> : ""}
     {title ? <span>{title}</span> : ""}
 </a>
