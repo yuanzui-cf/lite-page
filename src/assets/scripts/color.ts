@@ -27,15 +27,25 @@ export interface HSL {
  */
 export interface ColorPaletteObject {
     "000": string;
+    "050": string;
     "100": string;
+    "150": string;
     "200": string;
+    "250": string;
     "300": string;
+    "350": string;
     "400": string;
+    "450": string;
     "500": string;
+    "550": string;
     "600": string;
+    "650": string;
     "700": string;
+    "750": string;
     "800": string;
+    "850": string;
     "900": string;
+    "950": string;
     "1000": string;
 }
 
@@ -162,23 +172,33 @@ export function hslToRgb(h: number, s: number, l: number): RGB {
 }
 
 /**
- * Generates a color palette object containing 11 colors (5 light, 1 mid-tone, 5 dark) based on a given base color.
+ * Generates a color palette object containing 21 colors (10 light, 1 mid-tone, 10 dark) based on a given base color.
  * @param {string} baseHex - The hexadecimal code of the base color (e.g., "#RRGGBB").
  * @returns {ColorPaletteObject} An object containing the generated color palette.
  * @example
  * generateColorPaletteObject("#FF5733");
  * // Returns {
- * //   "000": "#FFECE6",
- * //   "100": "#FFD1C2",
- * //   "200": "#FFB69F",
- * //   "300": "#FF9B7B",
- * //   "400": "#FF8058",
- * //   "500": "#FF5733",
- * //   "600": "#CC4629",
- * //   "700": "#99351F",
- * //   "800": "#662415",
- * //   "900": "#33120A",
- * //   "1000": "#1A0905"
+ * //   "000": "#FFEBE6",
+ * //   "050": "#FFE0D6",
+ * //   "100": "#FFD6C7",
+ * //   "150": "#FFCCB7",
+ * //   "200": "#FFC1A8",
+ * //   "250": "#FFB799",
+ * //   "300": "#FFAC8A",
+ * //   "350": "#FFA27B",
+ * //   "400": "#FF976C",
+ * //   "450": "#FF8C5C",
+ * //   "500": "#FF824D",
+ * //   "550": "#ED7342",
+ * //   "600": "#DB6538",
+ * //   "650": "#C9562E",
+ * //   "700": "#B84824",
+ * //   "750": "#A6391A",
+ * //   "800": "#942B10",
+ * //   "850": "#821D06",
+ * //   "900": "#710E00",
+ * //   "950": "#5F0000",
+ * //   "1000": "#4D0000"
  * // }
  */
 export function generateColor(baseHex: string): ColorPaletteObject {
@@ -196,23 +216,20 @@ export function generateColor(baseHex: string): ColorPaletteObject {
     }
 
     const colorPalette: Partial<ColorPaletteObject> = {};
-    const lightnessLevels: number[] = [
-        0.95, 0.86, 0.77, 0.68, 0.59, 0.5, 0.41, 0.32, 0.23, 0.14, 0.05,
-    ];
+    const lightnessLevels: number[] = [];
+    // Generate 21 lightness values from 0.95 down to 0.05
+    for (let i = 0; i <= 20; i++) {
+        lightnessLevels.push(parseFloat((0.95 - i * 0.045).toFixed(3)));
+    }
 
-    const depthLabels: (keyof ColorPaletteObject)[] = [
-        "000",
-        "100",
-        "200",
-        "300",
-        "400",
-        "500",
-        "600",
-        "700",
-        "800",
-        "900",
-        "1000",
-    ];
+    const depthLabels: (keyof ColorPaletteObject)[] = [];
+    // Generate 21 depth labels from "000" to "1000" in steps of 50
+    for (let i = 0; i <= 20; i++) {
+        const value = i * 50;
+        depthLabels.push(
+            String(value).padStart(3, "0") as keyof ColorPaletteObject,
+        );
+    }
 
     lightnessLevels.forEach((lLevel, index) => {
         const currentHsl: HSL = {
