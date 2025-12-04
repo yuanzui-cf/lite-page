@@ -1,5 +1,6 @@
 # 🖥️ Lite Page
-A lite personal page template.
+
+A liteweight personal page template.
 
 [Demo](https://yzcf.top)
 
@@ -10,11 +11,11 @@ A lite personal page template.
 ## Use
 
 > [!IMPORTANT]
-> After folk or clone the repo, remember to remove redundant code like analytic code which used to analyze my own site. It doesn't work on your site!
+> After fork the repo, remember to remove redundant code like analytic code used to analyze my own site.
 
 Just fork the repo, edit the template and deploy your site on vercel automatically!
 
-If you do not want to deploy the page on vercel, you need to clone the repo to your computer, and install the dependencies by `npm` or `yarn` (Need Nodejs). After that, run `yarn build` or `npm run build` to build your static page. The static files will be output in `dist` folder. Then put them into anywhere you want to deploy your site on.
+If you do not want to deploy the page on vercel, you need to clone the repo to your computer, and install the dependencies by `bun` (Need [Bun.js](https://bun.com)). After that, run `bun run build` to build your static page. The static files will be output in `dist` folder. Then put them into anywhere you want to deploy your site on.
 
 ## Setting
 
