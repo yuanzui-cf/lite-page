@@ -54,10 +54,10 @@ hgroup {
         span {
             margin: 0;
             color: transparent;
-            background: linear-gradient(to right, darken(@theme, 40%), @theme);
+            background: linear-gradient(to bottom right, darken(@theme, 40%) 40%, @theme);
             -webkit-background-clip: text;
             background-clip: text;
-            text-shadow: 0 0 20px fade(@color, 50%);
+            text-shadow: 0 0 20px fade(@color, 40%);
             font-weight: 900;
         }
     }
@@ -74,7 +74,7 @@ hgroup {
 .group {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 8px;
 }
 .button {
     position: relative;
@@ -82,7 +82,7 @@ hgroup {
     height: 45px;
     padding: 0 20px;
     min-width: 60px;
-    border-radius: 45px;
+    border-radius: 17px;
     font-size: 14px;
     background: @btn-color;
     user-select: none;
@@ -99,7 +99,7 @@ hgroup {
         position: absolute;
         width: calc(100% - 10px);
         height: 35px;
-        border-radius: 35px;
+        border-radius: 12px;
         background: @dark-theme;
         transition: background .1s ease;
         z-index: -1;
