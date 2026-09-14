@@ -1,8 +1,9 @@
+> [!IMPORTANT]
+> The template won't be updated anymore. You can see my next personal homepage & blog theme [Nayuta](https://github.com/yuanzui-cf/nayuta).
+
 # 🖥️ Lite Page
 
 A liteweight personal page template.
-
-[Demo](https://yzcf.top)
 
 ---
 
